@@ -1,15 +1,23 @@
 var func = require('./module');
 
-async function main() {
+async function simple() {
 
   try {
-    var result = /* Cont1 */ await func();
-    console.log(result);
+    return /* Cont1 */ await func();
   } catch(e) {
     // Cont2
-    console.error(e);
+    throw e;
   }
 
+}
+
+async function main() {
+  try {
+    var result = await simple();
+    console.log(result);
+  } catch(e) {
+    console.error(e);
+  }
 }
 
 main();

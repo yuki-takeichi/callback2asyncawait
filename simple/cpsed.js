@@ -1,16 +1,20 @@
 var func = require('./module');
 
-function main() {
+function simple(callback) {
 
   // 引数の末尾が {success: (x:T) => Void, error: (e: Error) => Void} な
   // objectが渡されている関数について裏返す
   func({success: function(result) {
     // Cont1
-    console.log(result);
+    callback.success(result);
   }, error: function(e) {
     // Cont2
-    console.error(e);
+    callback.error(e);
   }});
+}
+
+function main() {
+  simple({success: console.log, error: console.error });
 }
 
 main();
