@@ -1,6 +1,6 @@
 var func = require('./module');
 
-function simple(callback) {
+function simple(callback /* このcallbackが呼ばれる箇所が再帰の基底 */) {
 
   // 引数の末尾が {success: (x:T) => Void, error: (e: Error) => Void} な
   // objectが渡されている関数について裏返す
